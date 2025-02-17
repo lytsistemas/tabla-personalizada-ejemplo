@@ -1,0 +1,47 @@
+<table class="custom-table">
+    <thead>
+      <tr>
+        <!-- Columna para el nombre con funcionalidad de ordenamiento y filtro -->
+        <th appSortable [sortableBy]="'nombre'" [data]="productos" (dataChanged)="onDataChanged($event)">
+          <div class="header-content">
+            Nombre
+            <span class="sort-arrow"></span>
+          </div>
+          <input type="text" appSortable [sortableBy]="'nombre'" [data]="productos" (dataChanged)="onDataChanged($event)">
+        </th>
+        <!-- Columna para el precio con funcionalidad de ordenamiento y filtro -->
+        <th appSortable [sortableBy]="'precio'" [data]="productos" (dataChanged)="onDataChanged($event)">
+          <div class="header-content">
+            Precio
+            <span class="sort-arrow"></span>
+          </div>
+          <input type="text" appSortable [sortableBy]="'precio'" [data]="productos" (dataChanged)="onDataChanged($event)">
+        </th>
+        <!-- Columna para la categoría con funcionalidad de ordenamiento y filtro -->
+        <th appSortable [sortableBy]="'categoria'" [data]="productos" (dataChanged)="onDataChanged($event)">
+          <div class="header-content">
+            Categoría
+            <span class="sort-arrow"></span>
+          </div>
+          <input type="text" appSortable [sortableBy]="'categoria'" [data]="productos" (dataChanged)="onDataChanged($event)">
+        </th>
+        <!-- Columna para la fecha con funcionalidad de ordenamiento y filtro -->
+        <th appSortable [sortableBy]="'fecha'" [data]="productos" (dataChanged)="onDataChanged($event)">
+          <div class="header-content">
+            Fecha
+            <span class="sort-arrow"></span>
+          </div>
+          <input type="text" appSortable [sortableBy]="'fecha'" [data]="productos" (dataChanged)="onDataChanged($event)">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Itera sobre los productos filtrados y muestra cada uno en una fila -->
+      <tr *ngFor="let producto of filteredProductos">
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.precio | currency: 'EUR' }}</td>
+        <td>{{ producto.categoria }}</td>
+        <td>{{ producto.fecha | date }}</td>
+      </tr>
+    </tbody>
+  </table>
